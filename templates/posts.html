@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Всі статті на сайті
+{% endblock %}
+
+{% block body %}
+<div class="container">
+<h1>Додати статтю</h1>
+
+{% if articles|length > 0 %}
+    {% for item in articles%}
+        <div class="alert alert-info">
+            <h2>{{ item.title }}</h2>
+            <p>{{ item.intro }}</p>
+            <p>Дата: {{ item.date.date() }}</p>
+            <a class="btn btn-warning" href="/posts/{{ item.id }}">Показати статтю</a>
+        </div>
+    {% endfor %}
+{% else %}
+<p>Статей немає, створіть нову</p>
+{% endif %}
+</div>
+{% endblock %}
